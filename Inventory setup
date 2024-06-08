@@ -1,0 +1,270 @@
+import sqlite3
+conn = sqlite3.connect('inventory.db')
+cursor = conn.cursor()
+cursor.execute('''
+CREATE TABLE IF NOT EXISTS inventory (
+    id INTEGER PRIMARY KEY,
+    item_name TEXT NOT NULL,
+    quantity INTEGER NOT NULL,
+    price REAL NOT NULL
+)
+''')
+def add_item(item_name, quantity, price):
+    conn = sqlite3.connect('inventory.db')
+    cursor = conn.cursor()
+    
+    cursor.execute('''
+    INSERT INTO inventory (item_name, quantity, price) 
+    VALUES (?, ?, ?)
+    ''', (item_name, quantity, price))
+    
+    conn.commit()
+    conn.close()
+add_item('Laptop', 10, 999.99)
+add_item('Mouse', 50, 19.99)
+
+    add_item function connects to the database, inserts a new item into the inventory table, and then closes the connection.
+    Running the example usage will add a "Laptop" with a quantity of 10 and price of $999.99, and a "Mouse" with a quantity of 50 and price of $19.99.
+
+    Function to update items in the inventory:
+def update_item(item_id=71482, item_name=COLTH PLASTIC BAG None, quantity=20, price=0.25):
+    conn = sqlite3.connect('inventory.db')
+    cursor = conn.cursor()
+    
+    if item_name:
+        cursor.execute('''
+        UPDATE inventory 
+        SET item_name = COLTH PLASTIC BAG
+        WHERE id = 71482
+        ''', (item_name, item_id))
+    
+    if quantity is not None:
+        cursor.execute('''
+        UPDATE inventory 
+        SET quantity = ?
+        WHERE id = ?
+        ''', (quantity, item_id))
+    
+    if price is not None:
+        cursor.execute('''
+        UPDATE inventory 
+        SET price = ?
+        WHERE id = ?
+        ''', (price, item_id))
+    
+    conn.commit()
+    conn.close()
+
+def delete_item(item_id):
+    conn = sqlite3.connect('inventory.db')
+    cursor = conn.cursor()
+    
+    cursor.execute('''
+    DELETE FROM inventory 
+    WHERE id = ?
+    ''', (item_id,))
+    
+    conn.commit()
+    conn.close()
+
+# Example usage
+delete_item(2)
+def display_inventory():
+    conn = sqlite3.connect('inventory.db')
+    cursor = conn.cursor()
+    
+    cursor.execute('''
+    SELECT * FROM inventory
+    ''')
+    
+    rows = cursor.fetchall()
+    
+    for row in rows:
+        print(row)
+    
+    conn.close()
+
+# Example usage
+display_inventory()
+import sqlite3
+
+# Function to create the inventory table
+def create_table():
+    conn = sqlite3.connect('inventory.db')
+    cursor = conn.cursor()
+    
+    cursor.execute('''
+    CREATE TABLE IF NOT EXISTS inventory (
+        id INTEGER PRIMARY KEY,
+        item_name TEXT NOT NULL,
+        quantity INTEGER NOT NULL,
+        price REAL NOT NULL
+    )
+    ''')
+    
+    conn.commit()
+    conn.close()
+
+# Function to add items to the inventory
+def add_item(item_name, quantity, price):
+    conn = sqlite3.connect('inventory.db')
+    cursor = conn.cursor()
+    
+    cursor.execute('''
+    INSERT INTO inventory (item_name, quantity, price) 
+    VALUES (?, ?, ?)
+    ''', (item_name, quantity, price))
+    
+    conn.commit()
+    conn.close()
+
+# Function to update items in the inventory
+def update_item(item_id, item_name=None, quantity=None, price=None):
+    conn = sqlite3.connect('inventory.db')
+    cursor = conn.cursor()
+    
+    if item_name:
+        cursor.execute('''
+        UPDATE inventory 
+        SET item_name = ?
+        WHERE id = ?
+        ''', (item_name, item_id))
+    
+    if quantity is not None:
+        cursor.execute('''
+        UPDATE inventory 
+        SET quantity = ?
+        WHERE id = ?
+        ''', (quantity, item_id))
+    
+    if price is not None:
+        cursor.execute('''
+        UPDATE inventory 
+        SET price = ?
+        WHERE id = ?
+        ''', (price, item_id))
+    
+    conn.commit()
+    conn.close()
+
+# Function to delete items from the inventory
+def delete_item(item_id):
+    conn = sqlite3.connect('inventory.db')
+    cursor = conn.cursor()
+    
+    cursor.execute('''
+    DELETE FROM inventory 
+    WHERE id = ?
+    ''', (item_id,))
+    
+    conn.commit()
+    conn.close()
+
+# Function to display the inventory
+def display_inventory():
+    conn = sqlite3.connect('inventory.db')
+    cursor = conn.cursor()
+    
+    cursor.execute('''
+    SELECT * FROM inventory
+    ''')
+    
+    rows = cursor.fetchall()
+    
+    for row in rows:
+        print(row)
+    
+    conn.close()
+
+# Main script
+if __name__ == '__main__':
+    create_table()
+    
+    # Add sample items
+    add_item('Laptop', 10, 999.99)
+    add_item('Mouse', 50, 19.99)
+    
+    # Update an item
+    update_item(1, quantity=20)
+    
+    # Display the inventory
+    display_inventory()
+    
+    # Delete an item
+    delete_item(2)
+    
+    # Display the inventory again to see the changes
+    display_inventory()
+import sqlite3
+
+# Function to create the inventory table
+def create_table():
+    conn = sqlite3.connect('inventory.db')
+    cursor = conn.cursor()
+    
+    cursor.execute('''
+    CREATE TABLE IF NOT EXISTS inventory (
+        id INTEGER PRIMARY KEY,
+        item_name TEXT NOT NULL,
+        quantity INTEGER NOT NULL,
+        price REAL NOT NULL
+    )
+    ''')
+    
+    conn.commit()
+    conn.close()
+
+# Function to add items to the inventory
+def add_item(item_name, quantity, price):
+    conn = sqlite3.connect('inventory.db')
+    cursor = conn.cursor()
+    
+    cursor.execute('''
+    INSERT INTO inventory (item_name, quantity, price) 
+    VALUES (?, ?, ?)
+    ''', (item_name, quantity, price))
+    
+    conn.commit()
+    conn.close()
+
+# Function to update items in the inventory
+def update_item(item_id, item_name=None, quantity=None, price=None):
+    conn = sqlite3.connect('inventory.db')
+    cursor = conn.cursor()
+    
+    if item_name:
+        cursor.execute('''
+        UPDATE inventory 
+        SET item_name = ?
+        WHERE id = ?
+        ''', (item_name, item_id))
+    
+    if quantity is not None:
+        cursor.execute('''
+        UPDATE inventory 
+        SET quantity = ?
+        WHERE id = ?
+        ''', (quantity, item_id))
+    
+    if price is not None:
+        cursor.execute('''
+        UPDATE inventory 
+        SET price = ?
+        WHERE id = ?
+        ''', (price, item_id))
+    
+    conn.commit()
+    conn.close()
+def delete_item(item_id):
+    conn = sqlite3.connect('inventory.db')
+    cursor = conn.cursor()
+    
+    cursor.execute('''
+    DELETE FROM inventory 
+    WHERE id = ?
+    ''', (item_id,))
+    
+    conn.commit()
+    conn.close()
+
+
